@@ -28,6 +28,7 @@ class ViewController: UIViewController {
                 do {
                     let decodedJson = JSONDecoder()
                     decodedJson.keyDecodingStrategy = .convertFromSnakeCase
+                    // 데이터를 읽어와서 데이터모델에 채워 넣는다.
                     self.responeArray = try decodedJson.decode([DataModel].self, from: responseData)
                     self.tableView.reloadData()
                 } catch {
@@ -45,6 +46,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        // 데이터모델로부터 데이터를 얻고 있다.
         cell.textLabel?.text = String(responeArray[indexPath.row].id ?? 0)
         cell.detailTextLabel?.text = responeArray[indexPath.row].title
         return cell

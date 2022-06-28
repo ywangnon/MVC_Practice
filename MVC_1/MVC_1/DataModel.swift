@@ -7,8 +7,8 @@
 
 import Foundation
 
+// 데이터를 채울 데이터 모델
 class DataModel: Codable {
-    
     var userId: Int?
     var id: Int?
     var title: String?
